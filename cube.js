@@ -5,5 +5,13 @@
 // enabled for your account.  You are still allowed to require
 // @cubejs-backend/*-driver packages.
 
-module.exports = {
-};
+const environment = process.env.CUBE_ENVIRONMENT_NAME;
+
+if (environment === `staging`) {
+  module.exports = {
+    checkAuth: (req, auth) => {},
+  };
+} else {
+  module.exports = {
+  };
+}
